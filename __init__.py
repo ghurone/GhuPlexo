@@ -1,5 +1,5 @@
 """
-GhuPlexo v1.0
+GhuPlexo v1.1
 
 Uma biblioteca para manipular numeros complexos
 -----------------------------------------------------------

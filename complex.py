@@ -43,7 +43,7 @@ class Complexo:
         elif isinstance(other, complex):
             return self._re == other.real and self._im == other.imag
         elif isinstance(other, Complexo):
-            return self._re == other.re and self._im == other.im
+            return self._re == other.__re and self._im == other.__im
         else:
             self.__ErroOperation()
     
@@ -68,8 +68,8 @@ class Complexo:
             re = self._re + other.real
             im = self._im + other.imag
         elif isinstance(other, Complexo):
-            re = self._re + other.re
-            im = self._im + other.im
+            re = self._re + other._re
+            im = self._im + other._im
         else:
             self.__ErroOperation()
             
@@ -87,8 +87,8 @@ class Complexo:
             re = self._re - other.real
             im = self._im - other.imag
         elif isinstance(other, Complexo):
-            re = self._re - other.re
-            im = self._im - other.im
+            re = self._re - other._re
+            im = self._im - other._im
         else:
             self.__ErrorOperation()
             
@@ -106,8 +106,8 @@ class Complexo:
             re = self._re * other.real - self._im * other.imag
             im = self._re * other.imag + self._im * other.real
         elif isinstance(other, Complexo):
-            re = self._re * other.re - self._im * other.im
-            im = self._re * other.im + self._im * other.re
+            re = self._re * other._re - self._im * other._im
+            im = self._re * other._im + self._im * other._re
         else:
             self.__ErroOperation()
         
@@ -126,9 +126,9 @@ class Complexo:
             re = (self._re * other.real + self._im * other.imag) / den
             im = (self._im * other.real - self._re * other.imag) / den
         elif isinstance(other, Complexo):
-            den = other.re**2 + other.im **2
-            re = (self._re * other.re + self._im * other.im) / den
-            im = (self._im * other.re - self._re * other.im) / den
+            den = other._re**2 + other._im **2
+            re = (self._re * other._re + self._im * other._im) / den
+            im = (self._im * other._re - self._re * other._im) / den
         else:
             self.__ErroOperation()
         
@@ -156,8 +156,8 @@ class Complexo:
             re = round((mod_z**other) * cos(other * theta),3)
             im = round((mod_z**other) * sin(other * theta),3)
         elif isinstance(other, Complexo):
-            const = e ** (other.re * log(mod_z) - other.im*theta)
-            arg = other.re*theta + other.im*log(mod_z)
+            const = e ** (other._re * log(mod_z) - other._im*theta)
+            arg = other._re*theta + other._im*log(mod_z)
             re = const * cos(arg)
             im = const * sin(arg)
         elif isinstance(other, complex):
